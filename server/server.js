@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("./models/user.model");
 const Bug = require("./models/bug.model");
+const path = require("node:path");
 require("dotenv").config();
 const cors = require("cors")
 
@@ -44,13 +45,16 @@ app.use(cors(corsOption));
 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')))
+
+
 
 const saltRound = 10;
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 
-app.get("/", (req, res)=>{
-    return res.status(200).send("<h1>Welcome Back</h1>")
-})
 // working successfully: integrated successfully 
 app.post("/bug", async (req,res)=>{
     const {bugname, buglevel,bugStatus, bugDescription, user_id} = req.body;
