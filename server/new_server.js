@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const cors = require("cors");
 const coroptions = {
-    origin:"http://localhost:5173"
+    origin:"http://localhost:5173",
+    methods:["POST", "GET", "PUT", "DELETE"]
 };
 const app = require("./server")
 

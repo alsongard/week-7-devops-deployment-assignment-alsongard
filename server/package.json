@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "jest",
-    "dev": "nodemon new_server"
+    "dev": "nodemon new_server",
+    "start": "node new_server"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
