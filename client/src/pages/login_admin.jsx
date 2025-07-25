@@ -36,7 +36,7 @@ function LoginAdmin(props) {
                 localStorage.setItem("id",id )
                 // Redirect to admin page or perform other actions
                 props.onLoggedIn()
-                navigate("/admin_page");
+                navigate("/adminPage");
             } else {
                 alert("Login failed: " + response.data.message);
             }

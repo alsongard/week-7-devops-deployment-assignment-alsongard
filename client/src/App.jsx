@@ -46,8 +46,8 @@ export default function App()
                         <Route index element={<LandingPage />} />
                         <Route path="register" element={<LoginReg />} />
                         <Route path="bug" element={<BugProtected />}/>
-                        <Route path='admin_login' element={<LoginAdmin/>}/>
-                        <Route path="admin_page" element={<AdminProtected/>}/>
+                        <Route path='admin' element={<LoginAdmin/>}/>
+                        <Route path="adminPage" element={<AdminProtected/>}/>
                         <Route path="*" element={<h1 className="text-2xl text-center dark:text-white">404 Not Found</h1>} />
                     </Route>
                 </Routes>
