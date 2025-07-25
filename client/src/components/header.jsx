@@ -2,7 +2,12 @@ import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 function Header(props)
 {
-    
+    function handleLogout()
+    {
+        console.log("logout clicked")
+        props.onLoggingOut();
+        localStorage.clear();
+    }
     return (
         <header className="bg-gray-800 text-white p-4 flex flex-col md:flex-row items-center justify-between shadow-md">
             <h1 className="text-2xl font-bold mb-2 md:mb-0">BugAppTracker</h1>
@@ -20,16 +25,17 @@ function Header(props)
                                     Home
                                 </NavLink>
                             </li>
+                            
                             <li>
                                 <NavLink
-                                    to="/services"
+                                    to="/bug"
                                     className="hover:text-yellow-400 transition-colors"
                                 >
-                                    Services
+                                    Bugs
                                 </NavLink>
                             </li>
                             <li>
-                                <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition-colors">
+                                <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition-colors">
                                     Logout
                                 </button>
                             </li>
@@ -69,5 +75,10 @@ const mapInitializeStateToProps = (state)=>{
         checkLoggedIn: state.isLoggedIn
     }
 }
+const mapDispatchToProps =(dispatch)=>{
+    return {
+        onLoggingOut: ()=>{dispatch({type:"LOGOUT"})}
+    }
+}
 
-export default connect(mapInitializeStateToProps)(Header)
+export default connect(mapInitializeStateToProps, mapDispatchToProps)(Header)
