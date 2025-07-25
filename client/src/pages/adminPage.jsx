@@ -1,6 +1,5 @@
 import React, { useState , useEffect} from 'react';
 import axios from 'axios';
-import { set } from 'mongoose';
 function AdminPage() {
     const email = localStorage.getItem("email");
     const role = localStorage.getItem("role");
