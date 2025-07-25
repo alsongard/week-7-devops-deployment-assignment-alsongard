@@ -1,15 +1,10 @@
 const  express = require("express");
-const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("./models/user.model");
 const Bug = require("./models/bug.model");
-const mongoose = require("mongoose")
 require("dotenv").config();
 
-// const coroptions = {
-//     origin:"http://localhost:5173"
-// };
 
 const app = express();
 

@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 const cors = require("cors");
 const coroptions = {
-    origin:"http://localhost:5173",
-    methods:["POST", "GET", "PUT", "DELETE"]
+    origin:"https://bugtrackerwebapp.vercel.app",
+    methods:["POST", "GET", "PUT", "DELETE"],
+    credentials:true
 };
 const app = require("./server")
 
