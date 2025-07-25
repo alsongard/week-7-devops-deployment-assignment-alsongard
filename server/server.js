@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const User = require("./models/user.model");
 const Bug = require("./models/bug.model");
 require("dotenv").config();
+const cors = require("cors")
 
 
 const app = express();
@@ -43,7 +44,6 @@ app.use(cors(corsOption));
 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-// app.use(cors(coroptions));
 
 const saltRound = 10;
 
