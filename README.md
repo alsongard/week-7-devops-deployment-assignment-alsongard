@@ -26,7 +26,8 @@ A full-stack web application for tracking and managing bug reports. This project
 - View all bugs reported by the user
 
 ### Admin
-- Login via `/admin_login` endpoint
+- Login via `/admin` endpoint
+- Admin View Page: /adminPage
 - View all users
 - View all bugs
 - Delete bug reports
@@ -99,8 +100,8 @@ A full-stack web application for tracking and managing bug reports. This project
 | `/bug/:id`       | GET    | View a specific bug                      |
 | `/bug/:id`       | PUT    | Update a specific bug                    |
 | `/bug/:id`       | DELETE | Delete a specific bug                    |
-| `/admin_login`   | POST   | Admin login                              |
-| `/admin`         | POST   | Admin actions (view users, view bugs, update/delete bugs) |
+| `/admin`   | POST   | Admin login                              |
+| `/adminPage`         | POST   | Admin actions (view users, view bugs, update/delete bugs) |
 
 ---
 
