@@ -23,7 +23,7 @@ function LoginAdmin(props) {
         event.preventDefault();
         // console.log("Form Data:", formData);
         try {
-            const response = await axios.post("http://localhost:5001/logadmin", formData);
+            const response = await axios.post("https://buggertrackapi.vercel.app/logadmin", formData);
             if (response.data.success) {
                 console.log('This is res.data.data')
                 console.log(response.data.data);

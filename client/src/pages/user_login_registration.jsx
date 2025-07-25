@@ -61,7 +61,7 @@ function LoginReg(props)
         try {
             if (displayLoginForm)
             {
-                const response = await axios.post("http://localhost:5001/login", formData);
+                const response = await axios.post("https://buggertrackapi.vercel.app/login", formData);
                 console.log("Login successful:", response.data);
                 localStorage.setItem("user_id", response.data.data.user_id);
                 localStorage.setItem("user_email", response.data.data.useremail);
@@ -72,7 +72,7 @@ function LoginReg(props)
             }
             if (displayRegisterForm)
             {
-                const response = await axios.post("http://localhost:5001/register", formData);
+                const response = await axios.post("https://buggertrackapi.vercel.app/register", formData);
                 console.log("Registration successful:", response.data);
                 if (response.data.success) {
                     setSuccessMsg("Registration successful! Now Login to continue.");

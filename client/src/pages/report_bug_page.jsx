@@ -28,7 +28,7 @@ export default function BugPage()
         // Handle form submission logic here
         console.log("Bug reported:", formData);
         try {
-            const response = await axios.post("http://localhost:5001/bug", {
+            const response = await axios.post("https://buggertrackapi.vercel.app/bug", {
                 bugname: formData.bugName,
                 buglevel: formData.bugLevel,
                 bugDescription: formData.bugDescription,
@@ -59,7 +59,7 @@ export default function BugPage()
         // Logic to view all reported bugs
         setViewAllBugs(true);
         try {
-            const response = await axios.get(`http://localhost:5001/getUserId/${user_id}`);
+            const response = await axios.get(`https://buggertrackapi.vercel.app/getUserId/${user_id}`);
             console.log("Bugs fetched successfully:", response.data);
             console.log(response);
             if (!response.data.success)

@@ -29,13 +29,13 @@ function AdminPage() {
 
             if (action === 'getAllBugs') {
                 // Fetch all bugs logic
-                const res = await axios.get("http://localhost:5001/bugs");
+                const res = await axios.get("https://buggertrackapi.vercel.app/bugs");
                 console.log(res.data.data);
                 setBugData(res.data.data);
             }
             else if (action === 'getAllUsers') {
                 // Fetch all users logic
-                const res = await axios.get("http://localhost:5001/users");
+                const res = await axios.get("https://buggertrackapi.vercel.app/users");
                 console.log(res.data.data);
                 setUserData(res.data.data);
             }
@@ -95,7 +95,7 @@ function AdminPage() {
     {
         console.log(`Bug ID: ${id}`);
         try {
-            const res = await axios.get(`http://localhost:5001/bug/${id}`);
+            const res = await axios.get(`https://buggertrackapi.vercel.app/bug/${id}`);
             console.log("Getting Bug Data before Update")
             console.log(res.data.data);
             setUpdateBugInfo(res.data.data);
@@ -123,7 +123,7 @@ function AdminPage() {
         event.preventDefault();
         const { bugId, bugStatus } = updateFormData;
         try {
-            const res = await axios.put(`http://localhost:5001/bug/${bugId}`, { bugStatus });
+            const res = await axios.put(`https://buggertrackapi.vercel.app/bug/${bugId}`, { bugStatus });
             // console.log("Bug updated successfully:", res.data);
             console.log(res.data);
             console.log(`success: ${res.data.sucess}`);
@@ -158,7 +158,7 @@ function AdminPage() {
         {
             const { id } = formDataId;
             console.log(`Bug ID to delete: ${id}`);
-            const res = await axios.delete(`http://localhost:5001/bug/${id}`);
+            const res = await axios.delete(`https://buggertrackapi.vercel.app/bug/${id}`);
             console.log("Bug deleted successfully:", res.data);
             if (res.data.success)
             {
@@ -201,7 +201,7 @@ function AdminPage() {
         console.log(formAdmin)
         try
         {
-            const res = await axios.post("http://localhost:5001/admin", formAdmin);
+            const res = await axios.post("https://buggertrackapi.vercel.app/admin", formAdmin);
             if (res.data.success)
             {
                 setUpdateSuccessMsg("Admin created successfully")
@@ -228,7 +228,7 @@ function AdminPage() {
         event.preventDefault();
         console.log(getUserId);
         try {
-            const res = await axios.get(`http://localhost:5001/getUserId/${getUserId.id}`);
+            const res = await axios.get(`https://buggertrackapi.vercel.app/getUserId/${getUserId.id}`);
             console.log("Bugs for user ID:", res.data.data);
             setBugData(res.data.data);
             
