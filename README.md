@@ -5,7 +5,7 @@ A full-stack web application for tracking and managing bug reports. This project
 
 ## 🌐 Access the App
  - Frontend: [bugtrackerwebapp](https://bugtrackerwebapp.vercel.app/)
- - Backend: [uggertrackapis](https://buggertrackapi.vercel.app/)
+ - Backend: [buggertrackapi](https://buggertrackapi.vercel.app/)
 
 
 ## 🚀 Tech Stack
