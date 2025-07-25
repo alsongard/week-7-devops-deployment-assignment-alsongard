@@ -267,10 +267,10 @@ app.post("/logadmin", async (req, res)=>{
         if (!role || !useremail || !password)
         {
             console.log(`Received emptyvalue`);
-            return res.status(400).json({success:false, sg:"N"})
+            return res.status(400).json({success:false, msg:"Invalid credentials"})
         }
         const foundUser = await User.findOne({email:useremail});
-        console.log(foundUser);
+        // console.log(foundUser);
         if (foundUser)
         {
             if (foundUser.role === role)
@@ -280,7 +280,7 @@ app.post("/logadmin", async (req, res)=>{
                 const result = await bcrypt.compare(password, foundUser.password);
                 if (result)
                 {
-                    return res.status(200).json({success:true, msg:"Admin Login successfully", data:{useremail:foundUser.useremail, role:foundUser.role, user_id:foundUser._id, user_email:foundUser.email}})
+                    return res.status(200).json({success:true, msg:"Admin Login successfully", data:{useremail:foundUser.useremail, role:foundUser.role, user_id:foundUser._id}})
                 }
                 else
                 {

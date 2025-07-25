@@ -2,6 +2,11 @@ import React, { useState , useEffect} from 'react';
 import axios from 'axios';
 import { set } from 'mongoose';
 function AdminPage() {
+    const email = localStorage.getItem("email");
+    const role = localStorage.getItem("role");
+    const id = localStorage.getItem("id");
+
+
     const [selectedAction, setSelectedAction] = useState('');
     const [bugData, setBugData] = useState([]);
     const [userData, setUserData] = useState([]);
@@ -237,6 +242,11 @@ function AdminPage() {
             {/* Sidebar */}
             <aside className="absolute left-0 top-0 w-[300px]  bg-gray-800 text-white flex flex-col p-8 overflow-y-auto h-full">
                 <h2 className="mb-8 text-2xl font-semibold">Admin Panel</h2>
+                <div>
+                    <p>Email: {email}</p>
+                    <p>Role: {role}</p>
+                    <p>Id: {id}</p>
+                </div>
                 <button
                     className="bg-gray-700 text-white border-none py-3 px-4 mb-4 rounded cursor-pointer text-base text-left hover:bg-gray-600"
                     onClick={() => handleAction('getAllBugs')}

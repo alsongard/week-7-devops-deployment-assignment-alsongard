@@ -4,8 +4,10 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import clsx from "clsx";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {connect} from 'react-redux'
 
-export default function LoginReg()
+
+function LoginReg(props)
 {
     const navigate = useNavigate();
     const [formData, setformData] = useState({
@@ -65,6 +67,7 @@ export default function LoginReg()
                 localStorage.setItem("user_email", response.data.data.useremail);
                 localStorage.setItem("user_role", response.data.data.role);
                 localStorage.setItem("token", response.data.data.token);
+                props.onLoggedIn()
                 navigate("/bug");
             }
             if (displayRegisterForm)
@@ -180,3 +183,11 @@ export default function LoginReg()
         </section>
     )
 }
+
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        onLoggedIn: ()=> dispatch({type:"LOGIN"})
+    }
+}
+
+export default  connect(null, mapDispatchToProps)(LoginReg);

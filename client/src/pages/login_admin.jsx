@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-function LoginAdmin() {
+import {connect} from  "react-redux";
+
+function LoginAdmin(props) {
     const [formData, setFormData] = useState({
         useremail: "",
         password: "",
@@ -19,12 +21,21 @@ function LoginAdmin() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        console.log("Form Data:", formData);
+        // console.log("Form Data:", formData);
         try {
             const response = await axios.post("http://localhost:5001/logadmin", formData);
             if (response.data.success) {
-
+                console.log('This is res.data.data')
+                console.log(response.data.data);
+                const role = response.data.data.role;
+                const email = response.data.data.user_email;
+                const id = response.data.data.user_id;
+                // console.log(`Role : ${response.data.data.role}`)
+                localStorage.setItem("role",role);
+                localStorage.setItem("email",email);
+                localStorage.setItem("id",id )
                 // Redirect to admin page or perform other actions
+                props.onLoggedIn()
                 navigate("/admin_page");
             } else {
                 alert("Login failed: " + response.data.message);
@@ -76,4 +87,9 @@ function LoginAdmin() {
     );
 };
 
-export default LoginAdmin;
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        onLoggedIn: ()=> dispatch({type:"LOGIN"})
+    }
+}
+export default connect(null, mapDispatchToProps)(LoginAdmin);
