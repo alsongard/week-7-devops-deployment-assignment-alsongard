@@ -1,78 +1,125 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19980575&assignment_repo_type=AssignmentRepo)
-# Deployment and DevOps for MERN Applications
 
-This assignment focuses on deploying a full MERN stack application to production, implementing CI/CD pipelines, and setting up monitoring for your application.
+# 🐞 Bug Tracker App
 
-## Assignment Overview
+A full-stack web application for tracking and managing bug reports. This project enables users to report bugs, view their submissions, and allows admins to manage all bug reports and users. Built with modern technologies for both frontend and backend, and includes robust authentication and testing.
 
-You will:
-1. Prepare your MERN application for production deployment
-2. Deploy the backend to a cloud platform
-3. Deploy the frontend to a static hosting service
-4. Set up CI/CD pipelines with GitHub Actions
-5. Implement monitoring and maintenance strategies
+## 🌐 Access the App
+ - Frontend: [bugtrackerwebapp](https://bugtrackerwebapp.vercel.app/)
+ - Backend: [uggertrackapis](https://buggertrackapi.vercel.app/)
 
-## Getting Started
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week7-Assignment.md` file
-4. Use the provided templates and configuration files as a starting point
+## 🚀 Tech Stack
 
-## Files Included
+- **Frontend:** React, Vite
+- **Backend:** Node.js, Express, Mongoose (MongoDB)
+- **Authentication:** JWT (JSON Web Token)
+- **Testing:** Jest, Supertest
 
-- `Week7-Assignment.md`: Detailed assignment instructions
-- `.github/workflows/`: GitHub Actions workflow templates
-- `deployment/`: Deployment configuration files and scripts
-- `.env.example`: Example environment variable templates
-- `monitoring/`: Monitoring configuration examples
+---
 
-## Requirements
+## ✨ Features
 
-- A completed MERN stack application from previous weeks
-- Accounts on the following services:
-  - GitHub
-  - MongoDB Atlas
-  - Render, Railway, or Heroku (for backend)
-  - Vercel, Netlify, or GitHub Pages (for frontend)
-- Basic understanding of CI/CD concepts
+### User
+- Register a new account
+- Sign in to access bug reporting features
+- Report new bugs (name, level, description, status)
+- View all bugs reported by the user
 
-## Deployment Platforms
+### Admin
+- Login via `/admin_login` endpoint
+- View all users
+- View all bugs
+- Delete bug reports
+- Update bug reports
 
-### Backend Deployment Options
-- **Render**: Easy to use, free tier available
-- **Railway**: Developer-friendly, generous free tier
-- **Heroku**: Well-established, extensive documentation
+---
 
-### Frontend Deployment Options
-- **Vercel**: Optimized for React apps, easy integration
-- **Netlify**: Great for static sites, good CI/CD
-- **GitHub Pages**: Free, integrated with GitHub
+## 📁 Folder Structure
 
-## CI/CD Pipeline
+```
+├── client/         # Frontend React app (Vite)
+├── server/         # Backend Express app
+│   ├── models/     # Mongoose models
+│   └── tests/      # Server-side tests (Jest & Supertest)
+```
 
-The assignment includes templates for setting up GitHub Actions workflows:
-- `frontend-ci.yml`: Tests and builds the React application
-- `backend-ci.yml`: Tests the Express.js backend
-- `frontend-cd.yml`: Deploys the frontend to your chosen platform
-- `backend-cd.yml`: Deploys the backend to your chosen platform
+---
 
-## Submission
+## ⚡ Setup Instructions
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+1. **Clone the repository**
+   ```bash
+   git clone <repo-url>
+   ```
+2. **Install dependencies**
+   - Frontend:
+     ```bash
+     cd client
+     npm install
+     ```
+   - Backend:
+     ```bash
+     cd server
+     npm install
+     ```
+3. **Configure environment variables**
+   - Backend: Create a `.env` file for MongoDB URI, JWT secret, and port
+4. **Run the application**
+   - Backend:
+     ```bash
+     npm start
+     # or
+     node server.js
+     ```
+   - Frontend:
+     ```bash
+     npm run dev
+     ```
 
-1. Complete all deployment tasks
-2. Set up CI/CD pipelines with GitHub Actions
-3. Deploy both frontend and backend to production
-4. Document your deployment process in the README.md
-5. Include screenshots of your CI/CD pipeline in action
-6. Add URLs to your deployed applications
 
-## Resources
+## 🧪 Testing
 
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [MongoDB Atlas Documentation](https://docs.atlas.mongodb.com/)
-- [Render Documentation](https://render.com/docs)
-- [Railway Documentation](https://docs.railway.app/)
-- [Vercel Documentation](https://vercel.com/docs)
-- [Netlify Documentation](https://docs.netlify.com/) 
+- Server-side tests are located in `server/tests/`
+- Run tests with:
+  ```bash
+  npm test
+  ```
+- Tests use Jest and Supertest to validate API endpoints
+
+---
+
+## 📚 API Endpoints
+
+| Endpoint         | Method | Description                              |
+|------------------|--------|------------------------------------------|
+| `/register`      | POST   | Register a new user                      |
+| `/login`         | POST   | User login                               |
+| `/bug`           | POST   | Report a new bug                         |
+| `/bugs`          | GET    | View all bugs                            |
+| `/bug/:id`       | GET    | View a specific bug                      |
+| `/bug/:id`       | PUT    | Update a specific bug                    |
+| `/bug/:id`       | DELETE | Delete a specific bug                    |
+| `/admin_login`   | POST   | Admin login                              |
+| `/admin`         | POST   | Admin actions (view users, view bugs, update/delete bugs) |
+
+---
+
+## 🖥️ Usage Example
+
+### Register a User
+```bash
+curl -X POST http://localhost:5000/register -H "Content-Type: application/json" -d '{"userEmail":"test@example.com","userPassword":"password123"}'
+```
+
+### Report a Bug
+```bash
+curl -X POST http://localhost:5000/bug -H "Content-Type: application/json" -d '{"bugname":"Login Error","buglevel":"high","bugDescription":"Cannot login with valid credentials","bugStatus":"report"}'
+```
+
+---
+
+
+
+## 📄 License
+
+MIT
