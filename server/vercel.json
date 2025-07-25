@@ -11,7 +11,6 @@
       "src": "/(.*)",
       "dest": "new_server.js",
       "methods":["POST", "GET", "PUT", "DELETE", "OPTIONS"]
-      
     }
   ]
 }

@@ -8,6 +8,39 @@ require("dotenv").config();
 
 const app = express();
 
+const corsOption = {
+    origin: function (origin, callback){
+        if (process.env.NODE_ENV !== "production") // checks the environment at which t's running
+        {
+            console.log(`[DEV] Allowing origin: ${origin}`)
+            return callback(null, true);
+        }
+        if (!origin)
+        {
+            return callback(null,true); // remember second argument: returns true(permit domain) or false(permit domain) 
+        }
+        const allowedDomains = [
+            "https://bugtrackerwebapp.vercel.app",
+            "http://localhost:5173"
+        ]
+        if (allowedDomains.includes(origin))// not equal the indexOf() method returns -1 if no value ns found in the array
+        {
+            return callback(null, true); // firstArgument: if we are expecting an error set this value as shown in else statemetn
+            // second argument: boolean value which indeicates if the origin is allowed(true) : on not allowed(false)
+        }
+        else
+        {
+            callback(new Error(`Origin: ${origin} not allowed by cors`));
+        }
+    },
+    methods:["POST", "GET", "PUT", "DELETE", "OPTIONS"],
+    credentials:true,
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOption));
+// app.options('/{*any}', cors(corsOption));
+
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 // app.use(cors(coroptions));
